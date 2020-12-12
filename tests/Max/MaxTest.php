@@ -37,9 +37,19 @@ class MaxTest extends TestCase
     /**
      * @test
      * */
+    public function itShouldThrowExceptionIfNonNumericElementsProvided(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->underTest->find([1,2, 'a']);
+    }
+
+    /**
+     * @test
+     * */
     public function itShouldThrowExceptionIfNoElementsProvided(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->underTest->find([]);
     }
+
 }
